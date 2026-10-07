@@ -1,0 +1,121 @@
+digraph AutoMax3FN {
+  graph [rankdir=LR, bgcolor="white", nodesep=0.5, ranksep=0.9, pad=0.2, fontname="Arial"];
+  node [shape=plain, fontname="Arial"];
+  edge [color="#6b7280", penwidth=1.2, arrowsize=0.7];
+
+  marca [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>marca</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_marca</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">nombre</TD></TR>
+    </TABLE>
+  >];
+
+  categoria [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>categoria</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_categoria</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">nombre</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">descripcion</TD></TR>
+    </TABLE>
+  >];
+
+  vehiculo [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#f4b942">
+      <TR><TD><B>vehiculo</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_vehiculo</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">nombre</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">modelo</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">anio</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">precio</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">imagen</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">descripcion</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">disponible</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>FK</B> id_marca</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>FK</B> id_categoria</TD></TR>
+    </TABLE>
+  >];
+
+  caracteristica [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>caracteristica</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_caracteristica</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">nombre</TD></TR>
+    </TABLE>
+  >];
+
+  vc [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>vehiculo_caracteristica</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK/FK</B> id_vehiculo</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK/FK</B> id_caracteristica</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">valor</TD></TR>
+    </TABLE>
+  >];
+
+  cliente [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>cliente</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_cliente</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">nombres</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">apellidos</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">email</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">telefono</TD></TR>
+    </TABLE>
+  >];
+
+  resena [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>resena</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_resena</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>FK</B> id_cliente</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>FK</B> id_vehiculo</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">calificacion</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">comentario</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">fecha</TD></TR>
+    </TABLE>
+  >];
+
+  promocion [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>promocion</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_promocion</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">titulo</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">descripcion</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">descuento_porcentaje</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">beneficio</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">fecha_inicio</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">fecha_fin</TD></TR>
+    </TABLE>
+  >];
+
+  vp [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>vehiculo_promocion</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK/FK</B> id_vehiculo</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK/FK</B> id_promocion</TD></TR>
+    </TABLE>
+  >];
+
+  solicitud [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#111827">
+      <TR><TD><FONT COLOR="white"><B>solicitud_contacto</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white"><B>PK</B> id_solicitud</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">nombres</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">email</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">telefono</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">vehiculo_interes</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">mensaje</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="white">fecha_hora</TD></TR>
+    </TABLE>
+  >];
+
+  marca -> vehiculo [label="1 : N"];
+  categoria -> vehiculo [label="1 : N"];
+  vehiculo -> vc [label="1 : N"];
+  caracteristica -> vc [label="1 : N"];
+  cliente -> resena [label="1 : N"];
+  vehiculo -> resena [label="1 : N"];
+  vehiculo -> vp [label="1 : N"];
+  promocion -> vp [label="1 : N"];
+}

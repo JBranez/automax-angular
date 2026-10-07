@@ -1,0 +1,25 @@
+<article class="vehicle-card">
+  <div class="position-relative">
+    <img class="vehicle-photo" [src]="vehicle().image" [alt]="vehicle().name">
+    <span class="badge text-bg-light position-absolute top-0 start-0 m-3 px-3 py-2">{{ vehicle().category }}</span>
+  </div>
+  <div class="p-4 d-flex flex-column h-auto">
+    <div class="d-flex justify-content-between gap-3 align-items-start">
+      <div>
+        <h3 class="h5 mb-1">{{ vehicle().name }}</h3>
+        <p class="small text-secondary mb-0">{{ vehicle().brand }} · {{ vehicle().model }} · {{ vehicle().year }}</p>
+      </div>
+      <span class="badge rounded-pill text-bg-success">Disponible</span>
+    </div>
+    <p class="text-secondary small my-3">{{ vehicle().description }}</p>
+    <div class="row g-2 mb-3">
+      @for (feature of vehicle().features; track feature) {
+        <div class="col-6"><div class="small rounded-3 bg-light p-2"><i class="bi bi-check2-circle me-1 text-success"></i>{{ feature }}</div></div>
+      }
+    </div>
+    <div class="d-flex justify-content-between align-items-end mt-auto pt-2">
+      <div><small class="text-secondary d-block">Precio de venta</small><span class="price-tag">{{ vehicle().price | currency:'PEN':'symbol-narrow':'1.0-0' }}</span></div>
+      <a href="#contacto" class="btn btn-dark rounded-3">Consultar</a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,83 @@
+<section id="contacto" class="py-5">
+  <div class="container py-3">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <span class="section-kicker">Déjanos tus datos en el FORMULARIO</span>
+        <h2 class="display-6 fw-bold mt-3">Cuéntanos qué estás buscando</h2>
+        <p class="text-secondary">Este formulario registra la consulta y la muestra en la misma página.</p>
+        <div class="card-soft p-4 mt-4">
+          <div class="d-flex gap-3"><i class="bi bi-telephone-forward fs-4 text-dark"></i><div><div class="fw-bold">Ventas</div><div class="text-secondary">(01) 555-2026</div></div></div>
+          <hr>
+          <div class="d-flex gap-3"><i class="bi bi-envelope fs-4 text-dark"></i><div><div class="fw-bold">Correo</div><div class="text-secondary">ventas@automax.pe</div></div></div>
+          <hr>
+          <div class="d-flex gap-3"><i class="bi bi-geo-alt fs-4 text-dark"></i><div><div class="fw-bold">Showroom</div><div class="text-secondary">Av. Principal 456, Huancayo</div></div></div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card-soft p-4 p-md-5">
+          @if (sent()) {
+            <div class="alert alert-auto d-flex gap-2 align-items-start" role="alert"><i class="bi bi-check-circle-fill"></i><div><strong>Consulta guardada.</strong><div class="small">Tus datos se almacenaron correctamente y aparecen debajo del formulario.</div></div></div>
+          }
+          @if (error()) {
+            <div class="alert alert-danger rounded-3" role="alert"><i class="bi bi-exclamation-triangle-fill me-2"></i>{{ error() }}</div>
+          }
+
+          <form (ngSubmit)="submit()" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold" for="name">Nombre completo *</label>
+                <input id="name" class="form-control" [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" type="text" placeholder="Ej. José Huamán">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold" for="email">Correo *</label>
+                <input id="email" class="form-control" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="correo@ejemplo.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold" for="phone">Teléfono</label>
+                <input id="phone" class="form-control" [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" type="tel" placeholder="999 999 999">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold" for="vehicle">Vehículo de interés</label>
+                <select id="vehicle" class="form-select" [ngModel]="vehicle()" (ngModelChange)="vehicle.set($event)" name="vehicle">
+                  <option value="">Seleccionar</option>
+                  <option>Toyota Corolla XLI</option>
+                  <option>Mazda CX-5 High</option>
+                  <option>Ford Ranger XLT</option>
+                  <option>Ford Mustang GT</option>
+                  <option>Jeep Compass Limited</option>
+                  <option>Toyota GR Supra</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="message">Mensaje *</label>
+                <textarea id="message" class="form-control" [ngModel]="message()" (ngModelChange)="message.set($event)" name="message" rows="4" placeholder="Quiero conocer disponibilidad, financiamiento..."></textarea>
+              </div>
+              <div class="col-12 d-flex flex-column flex-sm-row justify-content-between gap-2 align-items-sm-center mt-2">
+                <small class="text-secondary">Los campos marcados con * son obligatorios.</small>
+                <button type="submit" class="btn btn-auto px-4">Guardar consulta <i class="bi bi-send ms-1"></i></button>
+              </div>
+            </div>
+          </form>
+
+          @if (savedMessages().length > 0) {
+            <div class="border-top mt-4 pt-4">
+              <div class="d-flex justify-content-between align-items-center gap-2 mb-3"><h3 class="h5 mb-0">Consultas almacenadas</h3><button type="button" class="btn btn-sm btn-outline-danger rounded-3" (click)="clearHistory()">Limpiar</button></div>
+              <div class="vstack gap-2">
+                @for (item of savedMessages(); track item.id) {
+                  <div class="rounded-3 bg-light p-3">
+                    <div class="d-flex justify-content-between gap-3"><strong>{{ item.name }}</strong><small class="text-secondary">{{ item.createdAt }}</small></div>
+                    <div class="small text-secondary">{{ item.email }} · {{ item.vehicle || 'Sin modelo' }}</div>
+                    <div class="small mt-2">{{ item.message }}</div>
+                  </div>
+                }
+              </div>
+            </div>
+          } @else {
+            <div class="border-top mt-4 pt-4 small text-secondary"><i class="bi bi-database-check me-1"></i> Aún no hay consultas guardadas en el navegador.</div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

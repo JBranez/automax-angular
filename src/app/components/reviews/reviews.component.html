@@ -1,0 +1,33 @@
+<section id="resenas" class="py-5">
+  <div class="container py-3">
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-4">
+        <div class="card-soft p-4 h-100 d-flex flex-column justify-content-center">
+          <span class="section-kicker align-self-start">REVIEWS</span>
+          <h2 class="display-6 fw-bold mt-3">Experiencias que nos abalan</h2>
+          <p class="text-secondary">Valoraciones reales de clientes que pasaron por nuestra vitrina y blah blah</p>
+          <div class="display-5 fw-bold mt-2">{{ average | number:'1.1-1' }} <span class="h4 text-warning">★</span></div>
+          <div class="text-secondary small">Promedio de {{ reviews().length }} reseñas</div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="row g-3">
+          @for (review of reviews(); track review.id) {
+            <div class="col-md-6">
+              <article class="card-soft p-4 h-100">
+                <div class="d-flex justify-content-between gap-2">
+                  <div><div class="fw-bold">{{ review.customer }}</div><small class="text-secondary">{{ review.vehicle }}</small></div>
+                  <small class="text-secondary">{{ review.date }}</small>
+                </div>
+                <div class="mt-3 text-warning" aria-label="{{ review.rating }} de 5 estrellas">
+                  @for (star of [1,2,3,4,5]; track star) { <i class="bi" [class.bi-star-fill]="star <= review.rating" [class.bi-star]="star > review.rating"></i> }
+                </div>
+                <p class="mt-3 mb-0">“{{ review.comment }}”</p>
+              </article>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

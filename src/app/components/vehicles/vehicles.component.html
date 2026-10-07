@@ -1,0 +1,27 @@
+<section id="vehiculos" class="py-5">
+  <div class="container py-3">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+      <div>
+        <span class="section-kicker">Nuestra vitrina</span>
+        <h2 class="display-6 fw-bold mt-3 mb-2">Vehículos para distintos caminos</h2>
+        <p class="text-secondary mb-0">Filtra por categoría y revisa el equipamiento de cada unidad.</p>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        @for (category of categories(); track category) {
+          <button type="button" class="btn btn-sm rounded-pill px-3" [class.btn-dark]="selectedCategory() === category" [class.btn-outline-secondary]="selectedCategory() !== category" (click)="selectCategory(category)">{{ category }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="row g-4">
+      @for (vehicle of filteredVehicles(); track vehicle.id) {
+        <div class="col-12 col-md-6 col-xl-3"><app-vehicle-card [vehicle]="vehicle" /></div>
+      }
+    </div>
+
+    <div class="mt-4 p-3 rounded-4 bg-dark text-white d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+      <div><i class="bi bi-info-circle me-2 text-warning"></i> {{ filteredVehicles().length }} vehículo(s) mostrados en esta categoría.</div>
+      <small class="text-white-50">Precios referenciales sujetos a disponibilidad.</small>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root {
+  --auto-ink: #121723;
+  --auto-muted: #64748b;
+  --auto-paper: #f7f7f4;
+  --auto-white: #ffffff;
+  --auto-accent: #f4b942;
+  --auto-accent-dark: #d99712;
+  --auto-soft: #edf1f0;
+  --auto-line: #e2e7e4;
+  --auto-success: #147d64;
+  --auto-danger: #b42318;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--auto-paper);
+  color: var(--auto-ink);
+  font-family: 'DM Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, .brand-title {
+  font-family: 'Manrope', sans-serif;
+}
+section { scroll-margin-top: 84px; }
+
+.btn-auto {
+  background: var(--auto-accent);
+  border: 1px solid #e4a932;
+  color: #151515;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  box-shadow: 0 5px 0 #d49a24;
+  transition: .16s ease;
+}
+.btn-auto:hover {
+  background: #f7c65f;
+  color: #111;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 0 #d49a24;
+}
+.btn-auto:active { transform: translateY(3px); box-shadow: 0 2px 0 #d49a24; }
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  background: #ece9dc;
+  color: #6b551a;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.card-soft {
+  border: 1px solid var(--auto-line);
+  border-radius: 20px;
+  background: var(--auto-white);
+  box-shadow: 0 12px 35px rgba(18, 23, 35, .07);
+}
+
+.vehicle-card {
+  border: 1px solid var(--auto-line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: white;
+  transition: transform .2s ease, box-shadow .2s ease;
+  height: 100%;
+}
+.vehicle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 30px rgba(18, 23, 35, .12);
+}
+.vehicle-photo { height: 215px; object-fit: cover; width: 100%; }
+
+.price-tag {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.mini-stat {
+  border: 1px solid var(--auto-line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.72);
+  padding: .75rem 1rem;
+}
+
+.form-control, .form-select {
+  border-color: #d9dfdc;
+  border-radius: 11px;
+  padding: .72rem .85rem;
+}
+.form-control:focus, .form-select:focus {
+  border-color: #e1ab3b;
+  box-shadow: 0 0 0 .2rem rgba(244,185,66,.18);
+}
+
+.alert-auto {
+  border: 0;
+  border-left: 5px solid var(--auto-success);
+  border-radius: 12px;
+  background: #e9f7f2;
+  color: #115c4c;
+}
+
+.footer-link { color: #b8c1cf; text-decoration: none; }
+.footer-link:hover { color: #fff; }
+
+@media (max-width: 767.98px) {
+  .vehicle-photo { height: 195px; }
+}
